@@ -1,7 +1,7 @@
 {
-  "name": "express-ts-template",
+  "name": "express-ts-boilerplate",
   "version": "0.1.0",
-  "description": "A boilerplate express/typescript project for building RESTful backends",
+  "description": "An opinionated boilerplate express/typescript project for building RESTful backends",
   "main": "src/app.ts",
   "scripts": {
     "dev": "nodemon",
