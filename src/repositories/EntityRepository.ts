@@ -28,7 +28,8 @@ export default class EntityRepository<T extends IBaseEntity> implements IEntityR
     }
 
     public async findPaginated(query: ISearchQuery, options: FindManyOptions<T>)
-        : Promise<ISearchResult<T>> {
+    : Promise<ISearchResult<T>>
+    {
         options = createFindManySearchQueryOptions(query, options);
         const result = await this.repo.findAndCount(options);
         return new SearchResult<T>(query, result[0], result[1]);

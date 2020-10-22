@@ -2,11 +2,11 @@ const path = require('path');
 
 module.exports = {
     type: 'mysql',
-    host: 'localhost',
+    host: process.env.SQL_HOST,
     port: process.env.SQL_PORT,
-    username: 'root',
-    password: 'express-ts-sql',
-    database: 'express-ts-sql',
+    username: process.env.SQL_USER,
+    password: process.env.SQL_PASSWORD,
+    database: process.env.SQL_DB_NAME,
     entities: [
         path.join(__dirname, 'src/data/entity/*.ts')
     ],
