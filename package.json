@@ -1,11 +1,11 @@
 {
   "name": "express-ts-boilerplate",
   "version": "0.1.0",
-  "description": "An opinionated boilerplate express/typescript project for building RESTful backends",
+  "description": "An opinionated express/typescript boilerplate project for building RESTful backends",
   "main": "src/app.ts",
   "scripts": {
     "dev": "nodemon",
-    "lint": "eslint src/*/**.ts --fix",
+    "lint": "eslint src/*/**.ts",
     "schema:drop": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:sync",
     "seed:config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js config",
