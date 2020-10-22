@@ -17,10 +17,8 @@ export default abstract class BaseEntityService<T> implements IEntityService<T> 
     protected repo: Repository<T>;
 
     constructor(
-    @unmanaged()
-		    modelClass: (new () => T),
-        @inject(TYPES.IRepositoryFactory)
-		    factory: IRepositoryFactory
+        @unmanaged() modelClass: (new () => T),
+        @inject(TYPES.IRepositoryFactory) factory: IRepositoryFactory
     ) {
 	    this.repo = factory.create(modelClass);
     }
