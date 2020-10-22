@@ -7,7 +7,7 @@ import { RedisClient } from 'redis';
 export default class RedisService implements IRedisService {
 
     @inject(TYPES.RedisClient)
-    private _client: RedisClient;
+    protected client: RedisClient;
 
     @inject(TYPES.ILogger)
     private _logger: ILogger;
@@ -18,17 +18,14 @@ export default class RedisService implements IRedisService {
 	 */
     public get<T>(key: string): Promise<T> {
 	    return new Promise<T>((resolve, reject) => {
-	        if(!this._client) resolve(null);
-	        else {
-	            this._client.get(key, (err, res) => {
-	                if(err) reject(err);
-	                else if(!res) resolve(null);
-	                else {
-	                    this._logger.logInfo(`Found redis entry for key: ${key}`);
-	                    resolve(JSON.parse(res) as T);
-	                }
-	            });
-	        }
+            this.client.get(key, (err, res) => {
+                if(err) reject(err);
+                else if(!res) resolve(null);
+                else {
+                    this._logger.logInfo(`Found redis value for key: ${key}`);
+                    resolve(JSON.parse(res) as T);
+                }
+            });
 	    });
     }
 
@@ -39,14 +36,11 @@ export default class RedisService implements IRedisService {
 	 */
     public set(key: string, value: any): Promise<boolean> {
 	    return new Promise((resolve, reject) => {
-	        if(!this._client) resolve (false);
-	        else {
-	            this._client.set(key, JSON.stringify(value), (err, res) => {
-	                this._logger.logInfo('Setting redis entry for key: ' + key);
-	                if(err) reject(err);
-	                else resolve(res === 'OK');
-	            })
-	        }
+            this.client.set(key, JSON.stringify(value), (err, res) => {
+                this._logger.logInfo('Setting redis value for key: ' + key);
+                if(err) reject(err);
+                else resolve(res === 'OK');
+            })
 	    })
     }
 
