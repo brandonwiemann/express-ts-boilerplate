@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    mysql-development:
+        image: mysql:5.7.28
+        volumes:
+            - ./mysql_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: express-ts-sql
+            MYSQL_DATABASE: express-ts-sql
+        ports:
+            - "3306:3306"
+
+    redis-development:
+        image: redis:5.0.7
+        ports:
+            - "6379:6379"

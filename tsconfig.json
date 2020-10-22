@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es6",
+        "noImplicitAny": false,
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "strict": false,
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "lib": ["es2015"],
+        "typeRoots" : [
+            "./src/types",
+            "./node_modules/@types"
+		],
+		"types": ["reflect-metadata"]
+    },
+    "include": ["**/*.ts"]
+}

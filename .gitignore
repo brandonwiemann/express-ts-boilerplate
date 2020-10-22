@@ -1,0 +1,6 @@
+# System Files
+.DS_Store
+
+# Global node ignores
+node_modules
+.env
