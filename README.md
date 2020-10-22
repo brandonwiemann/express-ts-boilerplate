@@ -6,3 +6,6 @@ An opinionated express/typescript boilerplate project for building RESTful backe
 1. ```npm i```
 2. ```docker-compose up``` (If using docker for local database/redis)
 2. ```npm run watch```
+
+
+{{ WIP }}
