@@ -9,7 +9,9 @@
     "schema:drop": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:sync",
     "seed:config": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "seed": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "migrate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js migration",
+    "migrate:down": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js migration:down",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon"
   },
