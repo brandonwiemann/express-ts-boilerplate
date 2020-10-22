@@ -3,9 +3,10 @@ An opinionated express/typescript boilerplate project for building RESTful backe
 
 ## Getting Started
 
-1. ```npm i```
-2. ```docker-compose up``` (If using docker for local database/redis)
-2. ```npm run watch```
+1. ```$ npm i```
+1. ```$ cp .env-example .env```
+1. ```$ docker-compose up``` (If using docker for local database/redis)
+1. ```$ npm run watch```
 
 
 {{ WIP }}
