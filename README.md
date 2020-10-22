@@ -1,5 +1,5 @@
 # express-ts-boilerplate
-An opinionated boilerplate express/typescript project for building RESTful backends
+An opinionated express/typescript boilerplate project for building RESTful backends
 
 ## Getting Started
 
