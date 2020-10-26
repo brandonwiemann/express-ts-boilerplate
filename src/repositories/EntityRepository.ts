@@ -1,8 +1,8 @@
 import { Repository, EntitySchema, FindManyOptions, FindOneOptions, getConnection, DeepPartial } from 'typeorm';
-import { ISearchQuery, ISearchResult } from '@/types/search.types';
-import SearchResult from '@/class/SearchResult';
+import { IPaginatedQuery, IPaginatedResult } from '@/types/search.types';
+import PaginatedResult from '@/class/PaginatedResult';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
-import { createFindManySearchQueryOptions } from '@/utils/search.utils';
+import { createFindManyPaginatedQueryOptions } from '@/utils/search.utils';
 import { IBaseEntity } from '@/types/entity.types';
 import { injectable, unmanaged } from 'inversify';
 
@@ -27,12 +27,12 @@ export default class EntityRepository<T extends IBaseEntity> implements IEntityR
         return this.repo.findOne(options);
     }
 
-    public async findPaginated(query: ISearchQuery, options: FindManyOptions<T>)
-    : Promise<ISearchResult<T>>
+    public async findPaginated(query: IPaginatedQuery, options: FindManyOptions<T>)
+    : Promise<IPaginatedResult<T>>
     {
-        options = createFindManySearchQueryOptions(query, options);
+        options = createFindManyPaginatedQueryOptions(query, options);
         const result = await this.repo.findAndCount(options);
-        return new SearchResult<T>(query, result[0], result[1]);
+        return new PaginatedResult<T>(query, result[0], result[1]);
     }
 
     public save(model: DeepPartial<T>): Promise<T> {
@@ -60,7 +60,7 @@ export interface IEntityRepository<T> {
     get(id: number | string): Promise<T>
     find(options?: FindManyOptions<T>): Promise<T[]>
     findOne(options: FindOneOptions<T>): Promise<T>
-    findPaginated(query: ISearchQuery, options: FindManyOptions<T>): Promise<ISearchResult<T>>
+    findPaginated(query: IPaginatedQuery, options: FindManyOptions<T>): Promise<IPaginatedResult<T>>
     save(model: T): Promise<T>
     update(id: number, model: QueryDeepPartialEntity<T>): Promise<boolean>
     delete(id: number): Promise<boolean>

@@ -1,7 +1,7 @@
-import { ISearchQuery } from '@/types/search.types';
+import { IPaginatedQuery } from '@/types/search.types';
 import { FindManyOptions } from 'typeorm';
 
-export function createFindManySearchQueryOptions(query: ISearchQuery, options?: FindManyOptions) {
+export function createFindManyPaginatedQueryOptions(query: IPaginatedQuery, options?: FindManyOptions) {
     const skip = query.limit * (query.page - 1);
     const take = query.limit;
     options = options ? { ...options, skip, take } : { skip, take };

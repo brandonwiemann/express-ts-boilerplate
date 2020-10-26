@@ -1,12 +1,15 @@
-export interface ISearchQuery {
-    keyword: string;
+export interface IPaginatedQuery {
     limit: number;
     page: number;
     orderColumn?: string;
     descending: boolean;
 }
 
-export interface ISearchResult<T> {
+export interface ISearchQuery extends IPaginatedQuery {
+    keyword: string;
+}
+
+export interface IPaginatedResult<T> {
     total: number;
     results: T[];
 }
