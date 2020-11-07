@@ -11,6 +11,8 @@ import RedisService, { IRedisService } from '@/services/RedisService';
 import { IEntityRepository } from '@/types/entity.types';
 import EntityRepository from '@/repositories/EntityRepository';
 import redis, { RedisClient } from 'redis';
+import pino from 'pino';
+import config from '@/config/pino.config';
 
 const container = new Container();
 
@@ -25,6 +27,7 @@ container.bind<AuthController>(TYPES.IAuthController).to(AuthController);
 container.bind<IRedisService>(TYPES.IRedisService).to(RedisService).inRequestScope();
 container.bind<RedisClient>(TYPES.RedisClient).toConstantValue(redis.createClient());
 container.bind<IEntityRepository<any>>(TYPES.IEntityRepository).to(EntityRepository);
+container.bind<pino.Logger>(TYPES.PinoLogger).toConstantValue(pino(config));
 
 /* Factories
 ============================================*/

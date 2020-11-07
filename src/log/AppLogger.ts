@@ -1,17 +1,14 @@
 import { AnyObject } from '@/types/generic.types';
 import { ILogger } from '@/types/log.types';
 import pino from 'pino';
-import config from '@/config/pino.config';
-import { injectable } from 'inversify';
+import { inject, injectable } from 'inversify';
+import { TYPES } from '@/types/inversify.types';
 
 @injectable()
 export default class AppLogger implements ILogger {
 
-    logger: pino.Logger;
-
-    constructor(logger: pino.Logger = pino(config)) {
-        this.logger = logger;
-    }
+    @inject(TYPES.PinoLogger)
+    private logger: pino.Logger;
 
     logInfo(info: string, metadata?: AnyObject): void {
         this.logger.info(metadata || {}, info);

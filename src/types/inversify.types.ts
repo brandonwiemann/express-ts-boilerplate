@@ -7,5 +7,6 @@ export const TYPES = {
     IRedisService: Symbol.for('IRedisService'),
     IUserController: Symbol.for('IUserController'),
     IUserEntityService: Symbol.for('IUserEntityService'),
+    PinoLogger: Symbol.for('pino.Logger'),
     RedisClient: Symbol.for('RedisClient'),
 }
