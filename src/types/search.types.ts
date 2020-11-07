@@ -1,5 +1,5 @@
 export interface IPaginatedQuery {
-    limit: number;
+    perPage: number;
     page: number;
     orderColumn?: string;
     descending: boolean;

@@ -3,9 +3,13 @@
  * @param error The error
  */
 export function getErrorMessage(error: any): string {
-    if(typeof error === 'string') return error;
-    if(typeof error !== 'object' || !error.message) {
-        return `An unknown error occurred. ${error.toString()}`;
+    try {
+        if(typeof error === 'string') return error;
+        if(typeof error !== 'object' || !error || !error.message) {
+            return `An unknown error occurred. ${error.toString()}`;
+        }
+        return error.message;
+    } catch(e) {
+        return 'An unknown error occurred';
     }
-    return error.message;
 }
